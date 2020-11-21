@@ -21,6 +21,9 @@ ENV PANDOC_VERSION "1.19.2.1"
 # install pandoc
 RUN cabal update && cabal install pandoc-${PANDOC_VERSION}
 
+RUN apt-get update -y \
+  && apt-get install -y texlive-luatex texlive-lang-japanese
+
 WORKDIR /source
 
 ENTRYPOINT ["/root/.cabal/bin/pandoc"]
